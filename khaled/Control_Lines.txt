@@ -1,0 +1,68 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: CO2 Project
+// Engineer: Khaled atef mansour
+// 
+// Create Date:    19:34:04 10/15/2019 
+// Design Name: 
+// Module Name:    control 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module control(RegDst,ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUOp,Instruction,jump);
+input [5:0] Instruction;
+output reg RegDst,ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,jump;
+output reg [1:0] ALUOp;
+
+always
+
+if(Instruction==0)	// R-type Instructions
+begin
+RegDst<=1;ALUSrc<=0;MemtoReg<=0;RegWrite<=1;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=2;jump<=0;
+end
+
+else if(Instruction==35)	// load-word Instruction
+begin
+RegDst<=0;ALUSrc<=1;MemtoReg<=1;RegWrite<=1;MemRead<=1;MemWrite<=0;Branch<=0;ALUOp<=0;jump<=0;
+end
+
+else if(Instruction==43)	// store-word Instruction
+begin
+RegDst<=1'bx;ALUSrc<=1;MemtoReg<=1'bx;RegWrite<=0;MemRead<=0;MemWrite<=1;Branch<=0;ALUOp<=0;jump<=0;
+end
+
+else if(Instruction==4) 	// Branch-equal Instruction
+begin
+RegDst<=1'bx;ALUSrc<=0;MemtoReg<=1'bx;RegWrite<=0;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=1;jump<=0;
+end
+
+else if(Instruction==8)		// add-imediate Instruction
+begin
+RegDst<=0;ALUSrc<=1;MemtoReg<=0;RegWrite<=1;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=0;jump<=0;
+end
+
+else if(Instruction==12)	// and-imediate Instruction
+begin
+RegDst<=0;ALUSrc<=1;MemtoReg<=0;RegWrite<=1;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=3;jump<=0;
+end
+
+else if(Instruction==2)		// jump Instruction
+begin
+RegDst<=1'bx;ALUSrc<=1'bx;MemtoReg<=1'bx;RegWrite<=0;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=2'bx;jump<=1;
+end
+
+else
+begin
+RegDst<=1'bx;ALUSrc<=1'bx;MemtoReg<=1'bx;RegWrite<=1'bx;MemRead<=1'bx;MemWrite<=1'bx;Branch<=1'bx;ALUOp<=2'bx;jump<=1'bx;
+end
+
+endmodule
