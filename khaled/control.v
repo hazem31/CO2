@@ -1,6 +1,20 @@
 `timescale 1ns / 1ps
 module control(RegDst,ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUOp,Instruction,jump);
+/* inputs Instruction : 6 bits opcode to determine the type of the operation
+	
+	outputs 
+	
+	RegDst:determines the register to be written to
+	ALUSrc:determines the second input to the alu "immediate feild or register 2 data"
+	MemtoReg:determines the data to be written to a register
+	RegWrite:allows to write to a register
+	MemRead:allows to read from a memory address
+	MemWrite:allows to write in a memory address
+	Branch:used in branch condition
+	ALUOp:send data to alu control unit
+	jump:used in jump condition
 
+*/
 input [5:0] Instruction;
 output reg ALUSrc,RegWrite,MemRead,MemWrite,Branch,jump;
 output reg [1:0] ALUOp,RegDst,MemtoReg;
