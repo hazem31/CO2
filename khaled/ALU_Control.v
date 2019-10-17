@@ -4,7 +4,7 @@ input [5:0] Function_Code; // function feild
 input [1:0] ALUOp; // ALU Control line signal
 output reg [3:0]  ALU_CTR; // Alu control signal
 output reg JumpRegister;
-always 
+always @* 
 
 case (ALUOp)
 
