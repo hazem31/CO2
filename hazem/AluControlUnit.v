@@ -29,7 +29,7 @@ begin
         34 : AluControl <= 6; // 34 means send to the alu value 6 (subtract operation) sub instruction
         37 : AluControl <= 1; // 37 means send to the alu value 1 (or operation) or instruction
         42 : AluControl <= 7; // 42 means send to the alu value 7 (compare operation) slt instruction
-        39 : AluControl <= 12 // 39 means send to the alu value 12 (nor operation) nor instruction
+        39 : AluControl <= 12; // 39 means send to the alu value 12 (nor operation) nor instruction
         default: AluControl <= 0; // just in case make and error value
 
     endcase 
