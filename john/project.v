@@ -1,3 +1,4 @@
+// fe 7agat m4 kamla ll asf ... w fe 7agat m4 mzbota awe 
 //clock 
 module clk_gen(clk);
 output reg clk;
