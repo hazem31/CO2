@@ -1,0 +1,1647 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Reading design: MIPS_CPU.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "MIPS_CPU.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "MIPS_CPU"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : MIPS_CPU
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "E:\study\MIPS_Project\TXT\Register_File.v" into library work
+Parsing module <Register_File>.
+Analyzing Verilog file "E:\study\MIPS_Project\TXT\MUX4input.v" into library work
+Parsing module <MUX4input>.
+Analyzing Verilog file "E:\study\MIPS_Project\TXT\MUX2input.v" into library work
+Parsing module <MUX>.
+Analyzing Verilog file "E:\study\MIPS_Project\TXT\ALU_Control.v" into library work
+Parsing module <AluControlUint>.
+Analyzing Verilog file "E:\study\CO2\co2\PC.v" into library work
+Parsing module <PC>.
+Analyzing Verilog file "E:\study\CO2\co2\MUX_5Bit.v" into library work
+Parsing module <MUX_5Bit>.
+Analyzing Verilog file "E:\study\CO2\co2\InstructionMemory.v" into library work
+Parsing module <InstructionMemory>.
+Analyzing Verilog file "E:\study\CO2\co2\DataMemory.v" into library work
+Parsing module <DataMemory>.
+Analyzing Verilog file "E:\study\CO2\co2\control.v" into library work
+Parsing module <control>.
+Analyzing Verilog file "E:\study\CO2\co2\ALU.v" into library work
+Parsing module <AluMips>.
+Analyzing Verilog file "E:\study\CO2\co2\MIPS_CPU.v" into library work
+Parsing module <MIPS_CPU>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <MIPS_CPU>.
+
+Elaborating module <PC>.
+
+Elaborating module <InstructionMemory>.
+Reading initialization file \"Inst_Memory.txt\".
+
+Elaborating module <MUX_5Bit>.
+
+Elaborating module <Register_File>.
+
+Elaborating module <MUX>.
+
+Elaborating module <AluControlUint>.
+
+Elaborating module <AluMips>.
+
+Elaborating module <DataMemory>.
+Reading initialization file \"DataMemory.txt\".
+
+Elaborating module <MUX4input>.
+
+Elaborating module <control>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <MIPS_CPU>.
+    Related source file is "E:\study\CO2\co2\MIPS_CPU.v".
+    Found 32-bit adder for signal <shiftedSignEE> created at line 33.
+    Found 32-bit adder for signal <PC1> created at line 36.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+Unit <MIPS_CPU> synthesized.
+
+Synthesizing Unit <PC>.
+    Related source file is "E:\study\CO2\co2\PC.v".
+    Found 32-bit register for signal <PC_out>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <PC> synthesized.
+
+Synthesizing Unit <InstructionMemory>.
+    Related source file is "E:\study\CO2\co2\InstructionMemory.v".
+WARNING:Xst:647 - Input <Read_Address<31:13>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2999 - Signal 'Inst_Memory', unconnected in block 'InstructionMemory', is tied to its initial value.
+    Found 8192x32-bit single-port Read Only RAM <Mram_Inst_Memory> for signal <Inst_Memory>.
+    Summary:
+	inferred   1 RAM(s).
+Unit <InstructionMemory> synthesized.
+
+Synthesizing Unit <MUX_5Bit>.
+    Related source file is "E:\study\CO2\co2\MUX_5Bit.v".
+    Found 5-bit 4-to-1 multiplexer for signal <OUT> created at line 28.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <MUX_5Bit> synthesized.
+
+Synthesizing Unit <Register_File>.
+    Related source file is "E:\study\MIPS_Project\TXT\Register_File.v".
+    Found 32x32-bit dual-port RAM <Mram_Reg_File> for signal <Reg_File>.
+    Summary:
+	inferred   2 RAM(s).
+Unit <Register_File> synthesized.
+
+Synthesizing Unit <MUX>.
+    Related source file is "E:\study\MIPS_Project\TXT\MUX2input.v".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <MUX> synthesized.
+
+Synthesizing Unit <AluControlUint>.
+    Related source file is "E:\study\MIPS_Project\TXT\ALU_Control.v".
+    Summary:
+	no macro.
+Unit <AluControlUint> synthesized.
+
+Synthesizing Unit <AluMips>.
+    Related source file is "E:\study\CO2\co2\ALU.v".
+    Found 32-bit subtractor for signal <input1[31]_input2[31]_sub_5_OUT> created at line 50.
+    Found 32-bit adder for signal <input1[31]_input2[31]_add_3_OUT> created at line 49.
+    Found 32-bit shifter logical left for signal <input1[31]_shamt[4]_shift_left_9_OUT> created at line 53
+    Found 32-bit comparator greater for signal <input1[31]_input2[31]_LessThan_6_o> created at line 51
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <AluMips> synthesized.
+
+Synthesizing Unit <DataMemory>.
+    Related source file is "E:\study\CO2\co2\DataMemory.v".
+WARNING:Xst:647 - Input <Address<31:13>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 8192x32-bit single-port RAM <Mram_locations> for signal <locations>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Multiplexer(s).
+Unit <DataMemory> synthesized.
+
+Synthesizing Unit <MUX4input>.
+    Related source file is "E:\study\MIPS_Project\TXT\MUX4input.v".
+    Found 32-bit 4-to-1 multiplexer for signal <OUT> created at line 8.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <MUX4input> synthesized.
+
+Synthesizing Unit <control>.
+    Related source file is "E:\study\CO2\co2\control.v".
+    Summary:
+	no macro.
+Unit <control> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 32x32-bit dual-port RAM                               : 2
+ 8192x32-bit single-port RAM                           : 1
+ 8192x32-bit single-port Read Only RAM                 : 1
+# Adders/Subtractors                                   : 4
+ 32-bit adder                                          : 3
+ 32-bit subtractor                                     : 1
+# Registers                                            : 1
+ 32-bit register                                       : 1
+# Comparators                                          : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 7
+ 32-bit 2-to-1 multiplexer                             : 5
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 4-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <DataMemory>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_locations> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8192-word x 32-bit                  |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <MemWrite>      | high     |
+    |     addrA          | connected to signal <Address>       |          |
+    |     diA            | connected to signal <WriteData>     |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <DataMemory> synthesized (advanced).
+
+Synthesizing (advanced) Unit <MIPS_CPU>.
+INFO:Xst:3226 - The RAM <IM/Mram_Inst_Memory> will be implemented as a BLOCK RAM, absorbing the following register(s): <MIPS_PC/PC_out>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8192-word x 32-bit                  |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <CLK>           | rise     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <JumpRegMUXout<12:0>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <IR>            |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <MIPS_CPU> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Register_File>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_Reg_File> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     clkA           | connected to signal <clock>         | rise     |
+    |     weA            | connected to signal <RegWrite>      | high     |
+    |     addrA          | connected to signal <WriteReg>      |          |
+    |     diA            | connected to signal <WriteData>     |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     addrB          | connected to signal <Read1>         |          |
+    |     doB            | connected to signal <Data1>         |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_Reg_File1> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     clkA           | connected to signal <clock>         | rise     |
+    |     weA            | connected to signal <RegWrite>      | high     |
+    |     addrA          | connected to signal <WriteReg>      |          |
+    |     diA            | connected to signal <WriteData>     |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     addrB          | connected to signal <Read2>         |          |
+    |     doB            | connected to signal <Data2>         |          |
+    -----------------------------------------------------------------------
+Unit <Register_File> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 32x32-bit dual-port distributed RAM                   : 2
+ 8192x32-bit single-port block Read Only RAM           : 1
+ 8192x32-bit single-port distributed RAM               : 1
+# Adders/Subtractors                                   : 4
+ 32-bit adder                                          : 3
+ 32-bit subtractor                                     : 1
+# Registers                                            : 32
+ Flip-Flops                                            : 32
+# Comparators                                          : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 7
+ 32-bit 2-to-1 multiplexer                             : 5
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 4-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_13> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_14> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_15> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_16> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_17> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_18> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_19> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_20> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_21> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_22> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_23> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_24> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_25> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_26> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_27> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_28> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_29> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_30> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <MIPS_PC/PC_out_31> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations3> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations2> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations4> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations5> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations6> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations7> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations8> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations9> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations10> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations11> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations12> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations13> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations14> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations15> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations16> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations17> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations20> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations18> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations19> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations21> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations22> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations23> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations24> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations25> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations26> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations27> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations28> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations29> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations30> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations31> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations32> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations33> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations34> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations37> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations35> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations36> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations38> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations39> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations40> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations41> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations42> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations43> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations44> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations45> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations46> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations47> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations48> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations49> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations50> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations51> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations54> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations52> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations53> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations55> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations56> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations57> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations58> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations59> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations60> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations61> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations62> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations63> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations64> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations65> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations66> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations67> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations68> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations71> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations69> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations70> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations72> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations73> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations74> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations75> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations76> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations77> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations78> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations79> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations80> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations81> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations82> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations83> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations84> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations85> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations88> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations86> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations87> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations89> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations90> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations91> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations92> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations93> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations94> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations95> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations96> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations97> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations98> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations99> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations100> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations101> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations102> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations103> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations104> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations105> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations106> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations107> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations108> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations109> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations110> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations111> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations112> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations113> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations114> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations115> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations116> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations117> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations118> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations121> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations119> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations120> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations122> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations123> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations124> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations125> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations126> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations127> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations128> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations129> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations130> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations131> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations132> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations133> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations134> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations135> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations138> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations136> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations137> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations139> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations140> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations141> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations142> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations143> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations144> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations145> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations146> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations147> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations148> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations149> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations150> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations151> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations152> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations155> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations153> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations154> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations156> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations157> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations158> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations159> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations160> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations161> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations162> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations163> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations164> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations165> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations166> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations167> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations168> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations169> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations172> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations170> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations171> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations173> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations174> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations175> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations176> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations177> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations178> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations179> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations180> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations181> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations182> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations183> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations184> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations185> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations186> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations189> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations187> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations188> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations190> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations191> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations192> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations193> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations194> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations195> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations196> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations197> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations198> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations199> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations200> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations201> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations202> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations203> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations206> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations204> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations205> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations207> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations208> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations209> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations210> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations211> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations212> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations213> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations214> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations215> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations216> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations217> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations218> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations219> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations220> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations223> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations221> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations222> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations224> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations225> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations226> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations227> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations228> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations229> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations230> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations231> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations232> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations233> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations234> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations235> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations236> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations237> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations238> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations239> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations240> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations241> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations242> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations243> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations244> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations245> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations246> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations247> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations248> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations249> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations250> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations251> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations252> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations253> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations256> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations254> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations255> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations257> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations258> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations259> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations260> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations261> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations262> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations263> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations264> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations265> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations266> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations267> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations268> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations269> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations270> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations273> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations271> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations272> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations274> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations275> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations276> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations277> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations278> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations279> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations280> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations281> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations282> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations283> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations284> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations285> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations286> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations287> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations290> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations288> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations289> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations291> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations292> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations293> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations294> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations295> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations296> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations297> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations298> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations299> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations300> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations301> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations302> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations303> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations304> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations307> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations305> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations306> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations308> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations309> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations310> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations311> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations312> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations313> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations314> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations315> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations316> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations317> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations318> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations319> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations320> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations321> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations324> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations322> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations323> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations325> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations326> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations327> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations328> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations329> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations330> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations331> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations332> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations333> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations334> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations335> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations336> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations337> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations338> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations341> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations339> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations340> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations342> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations343> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations344> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations345> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations346> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations347> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations348> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations349> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations350> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations351> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations352> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations353> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations354> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations355> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations358> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations356> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations357> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations359> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations360> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations361> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations362> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations363> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations364> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations365> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations366> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations367> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations368> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations369> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations370> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations371> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations372> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations373> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations374> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations375> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations376> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations377> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations378> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations379> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations380> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations381> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations382> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations383> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations384> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations385> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations386> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations387> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations388> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations391> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations389> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations390> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations392> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations393> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations394> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations395> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations396> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations397> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations398> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations399> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations400> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations401> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations402> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations403> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations404> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations405> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations408> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations406> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations407> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations409> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations410> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations411> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations412> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations413> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations414> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations415> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations416> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations417> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations418> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations419> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations420> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations421> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations422> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations425> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations423> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations424> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations426> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations427> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations428> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations429> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations430> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations431> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations432> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations433> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations434> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations435> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations436> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations437> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations438> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations439> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations442> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations440> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations441> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations443> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations444> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations445> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations446> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations447> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations448> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations449> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations450> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations451> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations452> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations453> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations454> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations455> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations456> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations459> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations457> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations458> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations460> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations461> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations462> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations463> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations464> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations465> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations466> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations467> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations468> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations469> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations470> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations471> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations472> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations473> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations476> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations474> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations475> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations477> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations478> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations479> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations480> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations481> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations482> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations483> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations484> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations485> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations486> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations487> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations488> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations489> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations490> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations493> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations491> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations492> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations494> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations495> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations496> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations497> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations498> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations499> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations500> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations501> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations502> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations503> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations504> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations505> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations506> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations507> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations508> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations509> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations510> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations511> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations512> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations513> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations514> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations515> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations516> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations517> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations518> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations519> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations520> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations521> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations522> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations523> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations526> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations524> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations525> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations527> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations528> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations529> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations530> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations531> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations532> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations533> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations534> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations535> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations536> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations537> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations538> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations539> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations540> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations543> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations541> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations542> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations544> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations545> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations546> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations547> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations548> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations549> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations550> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations551> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations552> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations553> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations554> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations555> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations556> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations557> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations560> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations558> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations559> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations561> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations562> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations563> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations564> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations565> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations566> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations567> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations568> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations569> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations570> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations571> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations572> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations573> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations574> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations577> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations575> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations576> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations578> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations579> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations580> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations581> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations582> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations583> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations584> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations585> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations586> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations587> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations588> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations589> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations590> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations591> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations594> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations592> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations593> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations595> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations596> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations597> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations598> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations599> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations600> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations601> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations602> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations603> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations604> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations605> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations606> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations607> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations608> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations611> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations609> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations610> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations612> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations613> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations614> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations615> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations616> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations617> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations618> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations619> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations620> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations621> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations622> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations623> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations624> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations625> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations628> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations626> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations627> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations629> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations630> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations631> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations632> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations633> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations634> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations635> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations636> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations637> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations638> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations639> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations640> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations641> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations642> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations643> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations644> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations645> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations646> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations647> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations648> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations649> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations650> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations651> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations652> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations653> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations654> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations655> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations656> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations657> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations658> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations661> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations659> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations660> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations662> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations663> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations664> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations665> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations666> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations667> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations668> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations669> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations670> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations671> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations672> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations673> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations674> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations675> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations678> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations676> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations677> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations679> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations680> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations681> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations682> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations683> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations684> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations685> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations686> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations687> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations688> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations689> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations690> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations691> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations692> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations695> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations693> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations694> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations696> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations697> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations698> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations699> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations700> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations701> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations702> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations703> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations704> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations705> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations706> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations707> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations708> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations709> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations712> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations710> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations711> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations713> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations714> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations715> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations716> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations717> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations718> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations719> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations720> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations721> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations722> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations723> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations724> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations725> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations726> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations729> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations727> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations728> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations730> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations731> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations732> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations733> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations734> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations735> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations736> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations737> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations738> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations739> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations740> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations741> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations742> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations743> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations746> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations744> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations745> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations747> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations748> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations749> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations750> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations751> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations752> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations753> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations754> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations755> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations756> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations757> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations758> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations759> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations760> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations763> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations761> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations762> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations764> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations765> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations766> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations767> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations768> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations769> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations770> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations771> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations772> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations773> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations774> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations775> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations776> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations777> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations778> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations779> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations780> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations781> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations782> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations783> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations784> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations785> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations786> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations787> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations788> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations789> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations790> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations791> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations792> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations793> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations796> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations794> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations795> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations797> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations798> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations799> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations800> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations801> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations802> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations803> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations804> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations805> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations806> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations807> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations808> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations809> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations810> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations813> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations811> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations812> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations814> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations815> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations816> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations817> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations818> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations819> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations820> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations821> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations822> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations823> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations824> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations825> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations826> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations827> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations830> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations828> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations829> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations831> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations832> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations833> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations834> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations835> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations836> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations837> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations838> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations839> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations840> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations841> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations842> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations843> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations844> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations847> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations845> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations846> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations848> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations849> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations850> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations851> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations852> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations853> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations854> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations855> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations856> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations857> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations858> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations859> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations860> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations861> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations864> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations862> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations863> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations865> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations866> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations867> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations868> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations869> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations870> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations871> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations872> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations873> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations874> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations875> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations876> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations877> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations878> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations881> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations879> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations880> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations882> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations883> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations884> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations885> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations886> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations887> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations888> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations889> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations890> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations891> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations892> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations893> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations894> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations895> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations898> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations896> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations897> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations899> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations900> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations901> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations902> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations903> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations904> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations905> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations906> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations907> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations908> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations909> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations910> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations911> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations912> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations913> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations914> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations915> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations916> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations917> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations918> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations919> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations920> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations921> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations922> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations923> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations924> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations925> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations926> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations927> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations928> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations931> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations929> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations930> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations932> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations933> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations934> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations935> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations936> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations937> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations938> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations939> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations940> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations941> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations942> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations943> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations944> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations945> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations948> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations946> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations947> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations949> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations950> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations951> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations952> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations953> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations954> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations955> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations956> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations957> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations958> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations959> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations960> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations961> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations962> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations965> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations963> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations964> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations966> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations967> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations968> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations969> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations970> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations971> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations972> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations973> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations974> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations975> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations976> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations977> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations978> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations979> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations980> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations981> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations982> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations983> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations984> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations985> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations986> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations987> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations988> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations989> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations990> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations991> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations992> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations993> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations994> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations995> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations998> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations996> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations997> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations999> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1000> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1001> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1002> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1003> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1004> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1005> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1006> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1007> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1008> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1009> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1010> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1011> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1012> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1015> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1013> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1014> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1016> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1017> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1018> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1019> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1020> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1021> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1022> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1023> of sequential type is unconnected in block <MIPS_CPU>.
+WARNING:Xst:2677 - Node <Data_memory/Mram_locations1024> of sequential type is unconnected in block <MIPS_CPU>.
+
+Optimizing unit <MIPS_CPU> ...
+
+Optimizing unit <AluMips> ...
+INFO:Xst:2399 - RAMs <IM/Mram_Inst_Memory11>, <IM/Mram_Inst_Memory12> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <IM/Mram_Inst_Memory13>, <IM/Mram_Inst_Memory14> are equivalent, second RAM is removed
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block MIPS_CPU, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 13
+ Flip-Flops                                            : 13
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : MIPS_CPU.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 508
+#      GND                         : 1
+#      INV                         : 1
+#      LUT1                        : 9
+#      LUT2                        : 77
+#      LUT3                        : 26
+#      LUT4                        : 47
+#      LUT5                        : 39
+#      LUT6                        : 127
+#      MUXCY                       : 88
+#      MUXF7                       : 17
+#      VCC                         : 1
+#      XORCY                       : 75
+# FlipFlops/Latches                : 13
+#      FD                          : 13
+# RAMS                             : 16
+#      RAM32M                      : 10
+#      RAM32X1D                    : 4
+#      RAMB36E1                    : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 96
+#      OBUF                        : 96
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              13  out of  126800     0%  
+ Number of Slice LUTs:                  374  out of  63400     0%  
+    Number used as Logic:               326  out of  63400     0%  
+    Number used as Memory:               48  out of  19000     0%  
+       Number used as RAM:               48
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    374
+   Number with an unused Flip Flop:     361  out of    374    96%  
+   Number with an unused LUT:             0  out of    374     0%  
+   Number of fully used LUT-FF pairs:    13  out of    374     3%  
+   Number of unique control sets:         1
+
+IO Utilization: 
+ Number of IOs:                          97
+ Number of bonded IOBs:                  97  out of    210    46%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                2  out of    135     1%  
+    Number using Block RAM only:          2
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 29    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.521ns (Maximum Frequency: 221.170MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 1.717ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 4.521ns (frequency: 221.170MHz)
+  Total number of paths / destination ports: 8025 / 77
+-------------------------------------------------------------------------
+Delay:               4.521ns (Levels of Logic = 32)
+  Source:            RF/Mram_Reg_File11 (RAM)
+  Destination:       RF/Mram_Reg_File15 (RAM)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: RF/Mram_Reg_File11 to RF/Mram_Reg_File15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAM32M:WCLK->DOA0     7   1.345   0.407  RF/Mram_Reg_File11 (ReadData2_0_OBUF)
+     LUT2:I0->O            1   0.097   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_lut<0> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<0> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<1> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<2> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<3> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<4> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<5> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<6> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<7> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<8> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<9> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<10> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<11> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<12> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<13> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<14> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<15> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<16> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<17> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<18> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<19> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<20> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<21> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<22> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<22>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<23> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<23>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<24> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<24>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<25> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<25>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<26> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<26>)
+     MUXCY:CI->O           1   0.023   0.000  ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<27> (ALU/Madd_input1[31]_input2[31]_add_3_OUT_cy<27>)
+     XORCY:CI->O           1   0.370   0.295  ALU/Madd_input1[31]_input2[31]_add_3_OUT_xor<28> (ALU/input1[31]_input2[31]_add_3_OUT<28>)
+     LUT6:I5->O            1   0.097   0.295  ALU/_n0115<28>4 (ALU/_n0115<28>3)
+     LUT5:I4->O            2   0.097   0.283  ALU/_n0115<28>5 (AluOutput<28>)
+     RAM32M:DIC0               0.260          RF/Mram_Reg_File15
+    ----------------------------------------
+    Total                      4.521ns (3.240ns logic, 1.281ns route)
+                                       (71.7% logic, 28.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 64 / 64
+-------------------------------------------------------------------------
+Offset:              1.717ns (Levels of Logic = 1)
+  Source:            RF/Mram_Reg_File3 (RAM)
+  Destination:       ReadData1<17> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: RF/Mram_Reg_File3 to ReadData1<17>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAM32M:WCLK->DOC1    16   1.369   0.348  RF/Mram_Reg_File3 (ReadData1_17_OBUF)
+     OBUF:I->O                 0.000          ReadData1_17_OBUF (ReadData1<17>)
+    ----------------------------------------
+    Total                      1.717ns (1.369ns logic, 0.348ns route)
+                                       (79.7% logic, 20.3% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |    4.521|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 20.07 secs
+ 
+--> 
+
+Total memory usage is 298644 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings : 1046 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
+
