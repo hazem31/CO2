@@ -1,16 +1,15 @@
+`timescale 1 ns / 1ps
 module Clock_Generator(clock);
-
 output reg clock;
 
 initial
 begin
 clock=0;
 end
-always
 
+always @*
 begin
-#1 clock = 1;
-#1 clock = 0;
+#31 clock=~clock;
 end
 
 endmodule
