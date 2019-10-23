@@ -1,73 +1,77 @@
-module ALU_Control (Function_Code,ALUOp,ALU_CTR,JumpRegister);
+//inputs:
+// 1 - func: 6 bits represents the operation to be done in case of an R-format type register
+// 2 - AluOp : 3 bits comming from the control unit to dertermine which instruction type and operation
+// outputs:
+// 1 - AluControl : 4 pins going to the Alu to dertermine operation
+// 2 - JRMuxControl : one bit to control the mux of the JR address or the other muxes addresses
 
-input [5:0] Function_Code; // function feild
-input [1:0] ALUOp; // ALU Control line signal
-output reg [3:0]  ALU_CTR; // Alu control signal
-output reg JumpRegister;
-always @* 
+// function: take the AluOp and func and dertermine what to send to Alu unit on the control pins and JRMuxControl 
 
-case (ALUOp)
 
-0:
+module AluControlUint(AluControl,JRMuxControl,func,AluOp);
+
+input [5:0] func; 
+input [2:0] AluOp;
+output reg [3:0] AluControl;
+output reg JRMuxControl;
+
+// always block that loops everytime func or AluOp change 
+always@(func,AluOp)
 begin
-ALU_CTR <= 2; //add for load and store instructions
-JumpRegister<=0;
-end
-1:
-begin
-ALU_CTR <= 6; //sub for branch instructions
-JumpRegister<=0;
-end
-2: case (Function_Code) // R type instructions
-    32:
-   begin
-   ALU_CTR <= 2; //add
-   JumpRegister<=0;
-   end
-   
-   34: 
-   begin
-   ALU_CTR <= 6; //sub
-   JumpRegister<=0;
-   end
-   
-   36: 
-   begin
-   ALU_CTR <= 0; //and
-   JumpRegister<=0;
-   end
-   
-   37: 
-   begin
-   ALU_CTR <= 1; //or
-   JumpRegister<=0;
-   end
-   
-   39: 
-   begin
-   ALU_CTR <= 12; //nor
-   JumpRegister<=0;
-   end
-   
-   42: 
-   begin
-   ALU_CTR <= 7; //slt
-   JumpRegister<=0;
-   end
-   
-   8: 
-   begin
-   JumpRegister<=1; // JumpRegister instruction
-   ALU_CTR <= 4b'xxxx;
-   end
-   
-   endcase
-   
-3:
-begin
-ALU_CTR <= 1; //or for or immediate instructions
-JumpRegister<=0;
-end
-endcase
 
+if((func == 8)&&(AluOp ==2))
+	 begin
+	 JRMuxControl <=1;
+	 end
+	 else
+	 begin
+	 JRMuxControl <=0;
+	 end
+   
+    if (AluOp == 2) // incase R-format look at the func field and determine operation 
+    begin
+	 
+    case (func)
+        32 : AluControl <= 2; // 32 means send to the alu value 2 (add operation) add instruction
+        34 : AluControl <= 6; // 34 means send to the alu value 6 (subtract operation) sub instruction
+        37 : AluControl <= 1; // 37 means send to the alu value 1 (or operation) or instruction
+        42 : AluControl <= 7; // 42 means send to the alu value 7 (compare operation) slt instruction
+        39 : AluControl <= 12; // 39 means send to the alu value 12 (nor operation) nor instruction
+        default:AluControl <=0; // just in case make and error value
+    endcase 
+	 
+    end
+    // incase Lw or Sw we use the Alu to add the offset to base address
+    else if (AluOp == 0)
+    begin
+
+    AluControl <= 2; // send to the alu value 2 (add operation) lw or sw
+
+    end
+    // incase beq instruction use the Alu to subtract the two values 
+    else if (AluOp == 1) 
+    begin
+        
+    AluControl <= 6; // send to the alu value 6 (subtract operation) beq
+
+    end
+    // incase ori instruction use the Alu to or operation 
+    else if (AluOp == 3)
+    begin
+
+    AluControl <= 1; // send to the alu value 1 (or operation) ori 
+
+    end
+    // incase Sll instruction use the Alu to shift lift the value from read register 1 by shamt 
+    else if (AluOp == 4) 
+    begin
+        
+    AluControl <= 13; // send to the alu value 13 (sll instruction) 
+
+    end
+    else
+    begin
+    AluControl <= 0; //just in case make and  , :incase of an error
+    end
+end
 endmodule
