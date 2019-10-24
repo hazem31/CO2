@@ -40,10 +40,11 @@ output [31:0] Instruction; // Both input and output are wires
 
 reg [31:0] Inst_Memory [0:8191];
 
-initial
+//loading data into memory
+/* initial
 begin
-$readmemh("D:/Hazem/Private files/Backup/EN/Private files/Academic/3rd/CSE 311/work/IM.txt",Inst_Memory);
-end
+$readmemh("[project directory]/work/IM.txt",Inst_Memory);
+end */
 
 assign Instruction = Inst_Memory[Read_Address[12:0]];
 
