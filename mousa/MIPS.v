@@ -334,8 +334,8 @@ module control(RegDst,ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUOp,Ins
 	jump:used in jump condition
 */
 input [5:0] Instruction;
-output reg RegWrite,MemRead,MemWrite,Branch,jump;
-output reg [1:0] RegDst,MemtoReg,ALUSrc;
+output reg RegWrite,MemRead,MemWrite,jump;
+output reg [1:0] RegDst,MemtoReg,ALUSrc,Branch;
 output reg [2:0] ALUOp;
 
 always @*
@@ -353,7 +353,7 @@ end
 4:begin RegDst<=2'bxx;ALUSrc<=0;MemtoReg<=2'bxx;RegWrite<=0;MemRead<=0;MemWrite<=0;Branch<=1;ALUOp<=1;jump<=0; // Beq Instruction
 end
 
-5:begin RegDst<=2'bxx;ALUSrc<=0;MemtoReg<=2'bxx;RegWrite<=0;MemRead<=0;MemWrite<=0;Branch<=1;ALUOp<=1;jump<=0; // Bne Instruction
+5:begin RegDst<=2'bxx;ALUSrc<=0;MemtoReg<=2'bxx;RegWrite<=0;MemRead<=0;MemWrite<=0;Branch<=2;ALUOp<=1;jump<=0; // Bne Instruction
 end
 
 8:begin RegDst<=0;ALUSrc<=1;MemtoReg<=0;RegWrite<=1;MemRead<=0;MemWrite<=0;Branch<=0;ALUOp<=0;jump<=0; // add-imediate Instruction
@@ -411,8 +411,8 @@ module MIPS_CPU();
 
 reg [31:0] PC;
 wire [31:0] IR,MemToRegOut,ReadData1,ReadData2,SignEE, UnsignedEE,ALUin2,AluOutput,Data,shiftedSignEE,branch_muxOut,jump_addresss,JumpOut, PCinput, PCout, lui;
-wire RegWriteOut,RegWrite,CLK,JRMuxControl,ZeroFlag,MemWrite,MemRead,Branch,jump,isBranch;
-wire [1:0] RegDst,MemtoReg,ALUSrc; // 2 bits for JAL and 2 bits of alusrc for unsigned exntension
+wire RegWriteOut,RegWrite,CLK,JRMuxControl,ZeroFlag,MemWrite,MemRead,jump,isBranch;
+wire [1:0] RegDst,MemtoReg,ALUSrc,Branch; // 2 bits for JAL and 2 bits of alusrc for unsigned exntension
 wire [2:0] AluOp;
 wire[3:0] AluControl;
 wire [4:0] RegDstOut;
@@ -434,7 +434,7 @@ assign RegWriteOut = RegWrite & (~JRMuxControl);
 assign SignEE = { {16{IR[15]}}, IR[15:0] };
 assign UnsignedEE = { 16'b0 , IR[15:0] };		// for andi &  ori & xori operations
 assign shiftedSignEE = (SignEE <<2) + PCinput;
-assign isBranch = (IR[28:26]==5) ? (Branch & ~ZeroFlag):(Branch & ZeroFlag) ;
+assign isBranch = ((~Branch[1]) & Branch[0] & ZeroFlag) + (Branch[1] & (~Branch[0]) & (~ZeroFlag)) ; // for beq and bne instructions
 assign jump_addresss = { {PC[31:28]}, (IR[27:0]<<2) };
 assign lui = { SignEE[15:0] , ReadData2[15:0] };	// for lui operation
 
