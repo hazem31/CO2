@@ -40,10 +40,13 @@ output [31:0] Instruction; // Both input and output are wires
 
 reg [31:0] Inst_Memory [0:8191];
 
-//loading data into memory
-/* initial
+//initialization of instruction memory
+//there must be a file named IM.txt at "{project directory}/work"
+//replace [project directory] with the actual directory of the project
+/*
+initial
 begin
-$readmemh("[project directory]/work/IM.txt",Inst_Memory);
+$readmemh("[project directory]/IM.txt",Inst_Memory);
 end */
 
 assign Instruction = Inst_Memory[Read_Address[12:0]];
@@ -104,6 +107,7 @@ input RegWrite,clock;
 output [31:0] Data1,Data2;
 reg [31:0] Reg_File[0:31];
 
+// initialization of zero register and stack pointer
 initial
 begin
 Reg_File [0] <= 0;
@@ -132,8 +136,8 @@ endmodule
 // function: take the AluOp and func and dertermine what to send to Alu unit on the control pins and JRMuxControl 
 
 
-module AluControlUint(AluControl,func,AluOp);
-
+module AluControlUint(AluControl,JRMuxControl,func,AluOp);
+output  reg JRMuxControl;
 input [5:0] func; 
 input [2:0] AluOp;
 output reg [3:0] AluControl;
@@ -142,6 +146,15 @@ output reg [3:0] AluControl;
 always@(func,AluOp)
 begin
     // incase R-format look at the func field and determine operation 
+    if((func == 8)&&(AluOp ==2))
+	 begin
+	 JRMuxControl <=1;
+	 end
+	 else
+	 begin
+	 JRMuxControl <=0;
+    end
+
     if (AluOp == 2)
     begin
     case (func)
@@ -399,30 +412,31 @@ module MIPS_CPU();
 reg [31:0] PC;
 wire [31:0] IR,MemToRegOut,ReadData1,ReadData2,SignEE, UnsignedEE,ALUin2,AluOutput,Data,shiftedSignEE,branch_muxOut,jump_addresss,JumpOut, PCinput, PCout, lui;
 wire RegWriteOut,RegWrite,CLK,JRMuxControl,ZeroFlag,MemWrite,MemRead,Branch,jump,isBranch;
-wire [1:0] RegDst,MemtoReg,ALUSrc; // 2 bits for JAL 
+wire [1:0] RegDst,MemtoReg,ALUSrc; // 2 bits for JAL and 2 bits of alusrc for unsigned exntension
 wire [2:0] AluOp;
 wire[3:0] AluControl;
 wire [4:0] RegDstOut;
 
+//PC Adress initialization
 initial
 begin
 PC <= 0;
 end
 
+//PC module
 always @ (posedge CLK)
 begin
 PC <= PCout;
 end
 
 assign PCinput = PC + 4;
-assign JRMuxControl = (IR[31:26] == 0 & IR[5:0] == 8) ? 1:0 ;
 assign RegWriteOut = RegWrite & (~JRMuxControl);
 assign SignEE = { {16{IR[15]}}, IR[15:0] };
-assign UnsignedEE = { 16'b0 , IR[15:0] };
+assign UnsignedEE = { 16'b0 , IR[15:0] };		// for andi &  ori & xori operations
 assign shiftedSignEE = (SignEE <<2) + PCinput;
 assign isBranch = (IR[28:26]==5) ? (Branch & ~ZeroFlag):(Branch & ZeroFlag) ;
 assign jump_addresss = { {PC[31:28]}, (IR[27:0]<<2) };
-assign lui = { SignEE[15:0] , ReadData2[15:0] };
+assign lui = { SignEE[15:0] , ReadData2[15:0] };	// for lui operation
 
 
 Clock_Generator clock (CLK);
@@ -431,10 +445,9 @@ InstructionMemory IM(PC>>2,IR);
 
 control Control_Unit(RegDst,ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,AluOp,IR[31:26],jump);
 
-AluControlUint ALUcontrolunit1(AluControl,IR[5:0],AluOp);
+AluControlUint ALUcontrolunit1(AluControl,JRMuxControl,IR[5:0],AluOp);
 
-MUX4input2 RegDstMux(IR[20:16], IR[15:11], 5'b11111, 5'b0, RegDstOut, RegDst);// check with TA inputs problem
-
+MUX4input2 RegDstMux(IR[20:16], IR[15:11], 5'b11111, 5'b0, RegDstOut, RegDst);
 Register_File RF(IR[25:21],IR[20:16],RegDstOut,MemToRegOut,RegWriteOut,ReadData1,ReadData2,CLK);
 
 MUX4input ALU_SRC (ReadData2,SignEE,UnsignedEE,32'b0,ALUin2,ALUSrc);
@@ -453,4 +466,3 @@ MUX JumpRegMUX(JumpOut,ReadData1,PCout,JRMuxControl);
 
 
 endmodule
-
