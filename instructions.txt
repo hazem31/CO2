@@ -1,0 +1,13 @@
+used registers $t2,t3
+0x300A0010
+0x214A0001
+0x340B0014
+0x000B582A
+0x1120FFFD
+0x014B5020
+0x212B0100
+0x012A602A
+0x118A0000
+expected value for registers:
+$t2=41
+$t3=256
