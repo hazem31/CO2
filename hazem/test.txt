@@ -1,8 +1,4 @@
-mard: j main
-hlo: jr $s0
-hi: beq $s0,$0, main
-hello : lw $a1, 0($sp)
-  main: addi $s0,$0, 5
+main: addi $s0,$0, 5
 addi $s1,$0, 3
 add $a0,$s0,$zero
 add $a1,$s1,$zero
