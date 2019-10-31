@@ -1,3 +1,23 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    22:49:04 10/31/2019 
+// Design Name: 
+// Module Name:    trial2 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
 module PC(PC_in,PC_out,clock);
 
 input clock;
@@ -13,6 +33,22 @@ always @(posedge clock)
 begin
 PC_out <= PC_in;
 end
+
+endmodule
+
+module MUX4input(A,B,C,D,OUT,SEL);
+
+input [31:0] A,B,C,D;
+input [1:0] SEL;
+output reg [31:0] OUT;
+always @ (A,B,C,D,SEL)
+
+case(SEL)
+0:OUT <= A;
+1:OUT <= B;
+2:OUT <= C;
+3:OUT <= D;
+endcase
 
 endmodule
 
@@ -209,6 +245,7 @@ case(SEL)
 3:OUT <= D;
 endcase
 
+endmodule
 module MUX (A,B,OUT,SEL);
 
 input [31:0] A,B;
@@ -223,21 +260,6 @@ endcase
 
 endmodule
 
-module MUX4input2(A,B,C,D,OUT,SEL);
-
-input [4:0] A,B,C,D;
-input [1:0] SEL;
-output reg [4:0] OUT;
-always @ (A,B,C,D,SEL)
-
-case(SEL)
-0:OUT <= A;
-1:OUT <= B;
-2:OUT <= C;
-3:OUT <= D;
-endcase
-
-endmodule
 
 module Register_File (Read1,Read2,WriteReg,WriteData,RegWrite,Data1,Data2,clock);
 
@@ -271,26 +293,7 @@ end
 
 endmodule
 
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    16:14:55 10/17/2019 
-// Design Name: 
-// Module Name:    ALU 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
+
 
 
 /* inputs:
@@ -412,7 +415,4 @@ MUX JumpMUX (branch_muxOut,jump_addresss,JumpOut,jump);
 
 MUX JumpRegMUX(JumpOut,ReadData1,JumpRegMUXout,JRMuxControl);
 
-
 endmodule
-
-
