@@ -142,3 +142,120 @@ Machine Code:
 0800000b
 0220a020
 03e00008
+
+Test Case #4:
+assembly code:-
+addi $s0, $0, 1
+add $s1, $0, $0
+addi $t0, $0, 128
+while: beq $s0, $t0, done
+sll $s0, $s0, 1
+addi $s1, $s1, 1
+j while
+done:
+machine code in hexadecimal:-
+0x20100001
+0x00008820
+0x20080080
+0x12080003
+0x00108040
+0x22310001
+0x08100003
+used registers:-
+$s0 ,$s1,$t0
+expected output:-
+$s0=128,$s1=8,$t0=128
+
+Test Case #5:
+assembly code:-
+addi $s1, $0, 0
+addi $s0, $0, 1
+addi $t0, $0, 101
+loop: slt $t1, $s0, $t0
+beq $t1, $0, done
+add $s1, $s1, $s0
+sll $s0, $s0, 1
+j loop
+done:
+---------------------
+machine code in hexadecimal:-
+0x20110000
+0x20100001
+0x20080065
+0x0208482a
+0x11200003
+0x02308820
+0x00108040
+0x08100003
+expected output:-
+$s0=128
+$s1=127
+$t0=101
+
+used registers:-
+$s0 ,$s1,$t0
+expected output:-
+$s0=128,$s1=8,$t0=128
+
+Test Case #6
+assembly code:-
+main:addi $a0, $0,2
+addi $a1, $zero,3
+addi $a2, $zero,4
+addi $a3, $zero,5
+jal diffofsums 
+add $s0, $v0, $0 
+
+diffofsums:
+add $t0, $a0, $a1 
+add $t1, $a2, $a3
+sub $s0, $t0, $t1 
+add $v0, $s0,$0
+jr $ra
+machine code in hexadecimal:-
+0x20040002
+0x20050003
+0x20060004
+0x20050003
+0x20070005
+0x0c100006
+0x00408020
+0x00850420
+0x00c74820
+0x01098022
+0x02001020
+0x03e00008
+
+Test Case #7
+assembly code:-
+ADDI $sp, $sp, -4
+ADDI $sp, $sp, -8
+ADDI $sp, $sp, -12
+ADDI $sp, $sp, -16
+ADDI $sp, $sp, -20
+ADDI $sp, $sp, -24
+ADDI $sp, $sp, -28
+ADDI $sp, $sp, -32
+LW $s3, 0($sp)
+diffofsums:
+add $t0, $a0, $a1 
+add $t1, $a2, $a3
+sub $s0, $t0, $t1 
+add $v0, $s0,$0
+machine code in hexadecimal:-
+0x2010000A
+0x20110009
+0xAFB0FFF0
+0xAFB1FFF8
+0x8FB2FFF8
+0x23BDFFFC
+0x23BDFFF8
+0x23BDFFF4
+0x23BDFFF0
+0x23BDFFEC
+0x23BDFFE4
+0x23BDFFE0
+0x8FB30000
+//expected output:-
+s0: 10
+s1:  9
