@@ -259,3 +259,67 @@ machine code in hexadecimal:-
 //expected output:-
 s0: 10
 s1:  9
+Test Case #8
+add $t0,$zero,$zero
+addi $t1,$zero,20
+while:addi $t1,$t1,-1
+addi $t0,$t0,1
+slt $t2,$zero,EXIT
+j while
+EXIT:
+machine code in hex:-
+0x00004020
+0x20090014
+0x2129ffff
+0x21080001
+0x01284020
+0x0100502a
+0x11000001
+0x08100002
+expected output 
+$t0=0x00000000
+$t1=0xffffffeb
+Test Case #9
+addi $s3,$0,10
+addi $s4,$0,4
+addi $s1,$zero,4
+addi $s2,$zero,7
+bne $s3, $s4, Else
+add $s0, $s1, $s2
+j Exit
+Else: sub $s0, $s1, $s2
+Exit:
+Machine code:-
+0x2013000a
+0x20140004
+0x20110004
+0x20120007
+0x16740002
+0x02328020
+0x01000004
+0x02328020
+expected output :
+$s3=10
+$s4=4
+$s1=4
+$s2=7
+$s0=-3
+Test Case #10
+addi $s0, $0, 1
+add $s1, $0, $0
+addi $t0, $0, 128
+while: beq $s0, $t0, done
+sll $s0, $s0, 1
+addi $s1, $s1, 1
+j while
+done:
+machine code:-
+0x20100001
+0x00008820
+0x12080003
+0x00108040
+0x22310001
+0x08100003
+expected output:-
+$s0=0x00000080 #128
+$s1=0x00000007 #7
