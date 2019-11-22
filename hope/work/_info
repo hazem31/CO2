@@ -1,0 +1,251 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/hazem/Desktop/P0/ex1_tutorial
+vAluControlUint
+Z0 !s110 1572555058
+!i10b 1
+!s100 Gnl^Un`WlENbo?9Yg22f`3
+I[Nm;anNoWHM><@YE25a_M2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/hazem/Desktop/hope
+Z3 w1572555053
+Z4 8C:\Users\hazem\Desktop\hope\MIPS.v
+Z5 FC:\Users\hazem\Desktop\hope\MIPS.v
+L0 140
+Z6 OP;L;10.4a;61
+r1
+!s85 0
+31
+Z7 !s108 1572555058.000000
+Z8 !s107 C:\Users\hazem\Desktop\hope\MIPS.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\hazem\Desktop\hope\MIPS.v|
+!s101 -O0
+!i113 1
+Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@alu@control@uint
+vAluMips
+R0
+!i10b 1
+!s100 0jgP_<PST92C>QGi<EmA60
+I1J<Ko`[CHj2hXJlOmDWGn0
+R1
+R2
+R3
+R4
+R5
+L0 251
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@alu@mips
+vClock_Generator
+R0
+!i10b 1
+!s100 49DGjjC9KX@C:0HjJc@b03
+I8Nmf604_k]A_2Q:8WgBzj0
+R1
+R2
+R3
+R4
+R5
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@clock_@generator
+vcontrol
+R0
+!i10b 1
+!s100 fQX^ZLgVcgD_f;@Kf_`:F3
+I:C=ORh]NIYX2Be]IKeoed3
+R1
+R2
+R3
+R4
+R5
+L0 322
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vDataMemory
+R0
+!i10b 1
+!s100 lU7mV7Q2Gn4k0TnJ?W_];1
+ImT=fWM;;Ded_b0F]3BTTF2
+R1
+R2
+R3
+R4
+R5
+L0 298
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@data@memory
+vInstructionMemory
+R0
+!i10b 1
+!s100 Zl3_>3WMKkSPNJWK;cnJK0
+I6DZD]WU[?P2EHYnlnHdW72
+R1
+R2
+R3
+R4
+R5
+L0 37
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@instruction@memory
+vMIPS_CPU
+R0
+!i10b 1
+!s100 4?ojmBaUJiK^dLgVBRzJe3
+IFLKMS08TQoAC7d?oUDVG`3
+R1
+R2
+R3
+R4
+R5
+L0 411
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@i@p@s_@c@p@u
+vMUX
+R0
+!i10b 1
+!s100 b2B1H;^`3_eAa1J]_6C6U3
+IJBIYZK?z5z5C1jE:GciKK2
+R1
+R2
+R3
+R4
+R5
+L0 89
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x
+vMUX4input
+R0
+!i10b 1
+!s100 d6Dkb[oEkb6C@AhmTk63S0
+I=G4[ahiQ;`EU1XQWZ`IaG1
+R1
+R2
+R3
+R4
+R5
+L0 73
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x4input
+vMUX4input2
+R0
+!i10b 1
+!s100 Zd:2SkZlHW3FSY>8D7IJo2
+IZW58YK:FofM2e5dA^KYGS2
+R1
+R2
+R3
+R4
+R5
+L0 57
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x4input2
+vRegister_File
+R0
+!i10b 1
+!s100 E;c5WdR78YnaPnYC>`EkX1
+Il07RE]P4cBhm2Bd=gEW:C0
+R1
+R2
+R3
+R4
+R5
+L0 103
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@register_@file
