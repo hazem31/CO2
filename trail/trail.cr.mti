@@ -1,0 +1,19 @@
+C:/Users/hazem/Desktop/trail/trail2.v {1 {vlog -work work -stats=none C:/Users/hazem/Desktop/trail/trail2.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module PC
+-- Compiling module MUX4input
+-- Compiling module Clock_Generator
+-- Compiling module InstructionMemory
+-- Compiling module control
+-- Compiling module AluControlUint
+-- Compiling module MUX4input2
+-- Compiling module MUX
+-- Compiling module Register_File
+-- Compiling module AluMips
+-- Compiling module DataMemory
+-- Compiling module MIPS_CPU
+
+Top level modules:
+	MIPS_CPU
+
+} {} {}}

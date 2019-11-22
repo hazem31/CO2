@@ -1,0 +1,273 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/hazem/Desktop/hope
+vAluControlUint
+Z0 !s110 1572558376
+!i10b 1
+!s100 1zC@fU;>5=Na>NlFWL8nM0
+IIZ66UejJ3gF34m=HKcj`e0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/hazem/Desktop/trail
+Z3 w1572556952
+Z4 8C:/Users/hazem/Desktop/trail/trail2.v
+Z5 FC:/Users/hazem/Desktop/trail/trail2.v
+L0 153
+Z6 OP;L;10.4a;61
+r1
+!s85 0
+31
+Z7 !s108 1572558376.000000
+Z8 !s107 C:/Users/hazem/Desktop/trail/trail2.v|
+Z9 !s90 -reportprogress|300|-work|work|C:/Users/hazem/Desktop/trail/trail2.v|
+!s101 -O0
+!i113 1
+Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@alu@control@uint
+vAluMips
+R0
+!i10b 1
+!s100 2GM9k[2:G]^LZN4MfPO<L0
+I7nehRA5O>lc=4OPYc_TNK1
+R1
+R2
+R3
+R4
+R5
+L0 309
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@alu@mips
+vClock_Generator
+R0
+!i10b 1
+!s100 Sijzoh3R?1[jzYSd8b?RP1
+I:0T@Y_e=R:ETSlZeKThkg2
+R1
+R2
+R3
+R4
+R5
+L0 54
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@clock_@generator
+vcontrol
+R0
+!i10b 1
+!s100 ^ieg25zM92LN]>kVd4LD53
+I2Yc7b[YHdCYDM0Ye@QaoZ0
+R1
+R2
+R3
+R4
+R5
+L0 85
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vDataMemory
+R0
+!i10b 1
+!s100 eb>[L;G5iZ:h<QjQLkij[1
+IXdmnWTlQ`T6K395FEOH=m2
+R1
+R2
+R3
+R4
+R5
+L0 337
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@data@memory
+vInstructionMemory
+R0
+!i10b 1
+!s100 KMVCSh1UKhUeH:SBd^7AB0
+In7SflPohHeFNhf^cC:a6X1
+R1
+R2
+R3
+R4
+R5
+L0 69
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@instruction@memory
+vMIPS_CPU
+R0
+!i10b 1
+!s100 MCZW2?lO3e8?mZ;GXIA`l3
+Igz`Z?G`W<Tfa:N4R[VP_Q0
+R1
+R2
+R3
+R4
+R5
+L0 369
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@i@p@s_@c@p@u
+vMUX
+R0
+!i10b 1
+!s100 b2h3k]7cDGFG8FR72[QWW2
+I37QY25]hdSP@fILO<T?IF3
+R1
+R2
+R3
+R4
+R5
+L0 248
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x
+vMUX4input
+R0
+!i10b 1
+!s100 =CZ;VfoBN546h3Y`n6`ze2
+I@j@9IUC_V83Y@?FE?n22T1
+R1
+R2
+R3
+R4
+R5
+L0 38
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x4input
+vMUX4input2
+R0
+!i10b 1
+!s100 @7LlKmdif]KZG@Gik<HaN1
+I[U=<E[TGgG<K;_MXRUmeZ2
+R1
+R2
+R3
+R4
+R5
+L0 233
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@m@u@x4input2
+vPC
+R0
+!i10b 1
+!s100 MzX_P^W?XRmiMmJJe3^8n0
+IG@C]lg9U`ic8O`?7mGQ[62
+R1
+R2
+R3
+R4
+R5
+L0 20
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@p@c
+vRegister_File
+R0
+!i10b 1
+!s100 oQjz^<Zh@YNVG`gM:dckU2
+IY5EHcThhEcMU=aIZ0Oz@P2
+R1
+R2
+R3
+R4
+R5
+L0 263
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@register_@file
