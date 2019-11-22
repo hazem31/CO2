@@ -75,7 +75,12 @@ afb00000
 23bd0004
 03e00008
 
-
+Expected ouputs:
+$v0 = 0x0000000d
+$a0 = 5
+$a1 = 5
+$s0 = 0x0000000a
+$s2 = 0x00000014
 
 Test Case #2
 Assembly Code:
@@ -101,6 +106,12 @@ Machine Code:
 02298820
 22520001
 08000003
+
+expected outputs: $t0 = 1
+$t1 = 0x00000028
+$s1 = 0x000000dc
+$s2 = 0x0000000b
+$s3 = 0x0000000a
 
 
 Test Case #3
@@ -143,6 +154,15 @@ Machine Code:
 0220a020
 03e00008
 
+expected outputs: $a0 = 0x0000001e
+$a1 = 5
+$t0 = 0x00000024
+$t1 = 0x00000006
+$s1 = 0x0000001e
+$s4 = 0x0000001e
+$s5 = 0x017fbcc3
+
+
 Test Case #4:
 assembly code:-
 addi $s0, $0, 1
@@ -154,17 +174,17 @@ addi $s1, $s1, 1
 j while
 done:
 machine code in hexadecimal:-
-0x20100001
-0x00008820
-0x20080080
-0x12080003
-0x00108040
-0x22310001
-0x08100003
+20100001
+00008820
+20080080
+12080003
+00108040
+22310001
+08000003
 used registers:-
 $s0 ,$s1,$t0
 expected output:-
-$s0=128,$s1=8,$t0=128
+$s0=128,$s1=7,$t0=128
 
 Test Case #5:
 assembly code:-
@@ -179,14 +199,14 @@ j loop
 done:
 ---------------------
 machine code in hexadecimal:-
-0x20110000
-0x20100001
-0x20080065
-0x0208482a
-0x11200003
-0x02308820
-0x00108040
-0x08100003
+20110000
+20100001
+20080065
+0208482a
+11200003
+02308820
+00108040
+08000003
 expected output:-
 $s0=128
 $s1=127
@@ -205,80 +225,109 @@ addi $a2, $zero,4
 addi $a3, $zero,5
 jal diffofsums 
 add $s0, $v0, $0 
-
 diffofsums:
 add $t0, $a0, $a1 
 add $t1, $a2, $a3
 sub $s0, $t0, $t1 
 add $v0, $s0,$0
 jr $ra
+
 machine code in hexadecimal:-
-0x20040002
-0x20050003
-0x20060004
-0x20050003
-0x20070005
-0x0c100006
-0x00408020
-0x00850420
-0x00c74820
-0x01098022
-0x02001020
-0x03e00008
+20040002
+20050003
+20060004
+20070005
+0c000006
+00408020
+00854020
+00c74820
+01098022
+02001020
+03e00008
+
+expected outputs:
+$v0 = 0xfffffffc
+$a0 = 0x00000002
+$a1 = 0x00000003
+$a2 = 0x00000004
+$a3 = 0x00000005
+$t0 = 0x00000005
+$t1 = 0x00000009
+$s0 = 0xfffffffc
+
 
 Test Case #7
 assembly code:-
-ADDI $sp, $sp, -4
-ADDI $sp, $sp, -8
-ADDI $sp, $sp, -12
-ADDI $sp, $sp, -16
-ADDI $sp, $sp, -20
-ADDI $sp, $sp, -24
-ADDI $sp, $sp, -28
-ADDI $sp, $sp, -32
-LW $s3, 0($sp)
+main: addi $sp, $sp, -4
+addi $sp, $sp, -8
+addi $t0, $0, 256
+sw $t0, 0($sp)
+lw $s3, 0($sp)
+addi $a0, $0,2
+addi $a1, $zero,3
+addi $a2, $zero,4
+addi $a3, $zero,5
+jal diffofsums 
+add $s0, $v0, $0 
 diffofsums:
 add $t0, $a0, $a1 
 add $t1, $a2, $a3
 sub $s0, $t0, $t1 
 add $v0, $s0,$0
+
 machine code in hexadecimal:-
-0x2010000A
-0x20110009
-0xAFB0FFF0
-0xAFB1FFF8
-0x8FB2FFF8
-0x23BDFFFC
-0x23BDFFF8
-0x23BDFFF4
-0x23BDFFF0
-0x23BDFFEC
-0x23BDFFE4
-0x23BDFFE0
-0x8FB30000
+23bdfffc
+23bdfff8
+20080100
+afa80000
+8fb30000
+20040002
+20050003
+20060004
+20070005
+0c00000b
+00408020
+00854020
+00c74820
+01098022
+02001020
+
 //expected output:-
-s0: 10
-s1:  9
+$v0 = 0xfffffffc
+$a0 = 0x00000002
+$a1 = 0x00000003
+$a2 = 0x00000004
+$a3 = 0x00000005
+$t0 = 0x00000005
+$t1 = 0x00000009
+$s0 = 0xfffffffc
+$s3 = 0x00000100
+
 Test Case #8
 add $t0,$zero,$zero
 addi $t1,$zero,20
 while:addi $t1,$t1,-1
 addi $t0,$t0,1
-slt $t2,$zero,EXIT
+slt $at,$t1,$t2
+beq $at, $0, EXIT
 j while
 EXIT:
+
 machine code in hex:-
-0x00004020
-0x20090014
-0x2129ffff
-0x21080001
-0x01284020
-0x0100502a
-0x11000001
-0x08100002
+00004020
+20090014
+2129ffff
+21080001
+012a582a
+11600001
+08000002
+
+
 expected output 
-$t0=0x00000000
-$t1=0xffffffeb
+$t0= 0x00000001
+$t1= 0x00000013
+
+
 Test Case #9
 addi $s3,$0,10
 addi $s4,$0,4
@@ -289,21 +338,26 @@ add $s0, $s1, $s2
 j Exit
 Else: sub $s0, $s1, $s2
 Exit:
+
+
 Machine code:-
-0x2013000a
-0x20140004
-0x20110004
-0x20120007
-0x16740002
-0x02328020
-0x01000004
-0x02328020
+2013000a
+20140004
+20110004
+20120007
+16740002
+02328020
+08000008
+02328022
 expected output :
 $s3=10
 $s4=4
 $s1=4
 $s2=7
-$s0=-3
+$s0=-3  = 0xfffffffd
+
+
+
 Test Case #10
 addi $s0, $0, 1
 add $s1, $0, $0
@@ -313,13 +367,18 @@ sll $s0, $s0, 1
 addi $s1, $s1, 1
 j while
 done:
+
+
 machine code:-
-0x20100001
-0x00008820
-0x12080003
-0x00108040
-0x22310001
-0x08100003
+20100001
+00008820
+20080080
+12080003
+00108040
+22310001
+08000003
+
 expected output:-
-$s0=0x00000080 #128
-$s1=0x00000007 #7
+$t0=0x00000080
+$s0=0x00000080
+$s1=0x00000007
