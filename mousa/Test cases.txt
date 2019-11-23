@@ -1,10 +1,11 @@
 All programs are initalized at location 0x000000000000 in instruction memory
+$sp is initialized at location 0x00000000003C in memory
 Results can be checked via MARS simulator.
 Programs can be tested in Modelsim via this benchtest segment of code inside Instruction_Memory module:
 
 initial
 begin
-$readmemh("D:/Hazem/Private files/Backup/EN/Private files/Academic/3rd/CSE 311/work/IM.txt",Inst_Memory);
+$readmemh("[directory]/IM.txt",Inst_Memory);
 end
 
 There must be a file (named "IM.txt") in "work" directory that contains Machine Codes in hexadecimal form.
@@ -12,6 +13,20 @@ There must be a file (named "IM.txt") in "work" directory that contains Machine 
 
 
 Test case #1
+
+c-style code:
+void main () {
+int s0 = 5, s1 = 3, s2;
+int s2 = sum2(s0, s1);
+}
+int sum2(int a, int b) {
+return (sum(a,a) + b);
+}
+int sum (int a, int b) {
+int m; m = a+b;
+return m;
+}
+
 Assembly code:
 .text 
 nop 
@@ -79,10 +94,27 @@ Expected ouputs:
 $v0 = 0x0000000d
 $a0 = 5
 $a1 = 5
-$s0 = 0x0000000a
+$s0 = 0x00000005
+$s1 = 0x00000003
 $s2 = 0x00000014
+$sp = 0x00000030
+
+Data Memory:
+[0x000000000030] = 0x00000005
+[0x000000000034] = 0x00000003
+[0x000000000038] = 0x00000018
+
 
 Test Case #2
+C-style code:
+main () {
+int s2 = 1, s1 = 0, s3 = 10;
+for (; s2 <= s3; s2++) {
+int t1 = 4*s2;
+s1 +=t1;
+}
+}
+
 Assembly Code:
 .text
 	addi $s2, $zero, 1
@@ -115,6 +147,22 @@ $s3 = 0x0000000a
 
 
 Test Case #3
+c-style code:
+void main () {
+int a1 = 5, t0 = 36, s4;
+s4 = func(a1, t0);
+}
+
+int func(a, b) {
+int t1 = 6, s0 = b, s1 = 0, s4;
+while (s0 >= 0) {
+s0 -= t1;
+s1 +=a;
+}
+s4 = s1;
+return s4;
+}
+
 Assembly Code:
 .text
 main:	addi $a1, $zero, 5
@@ -164,6 +212,15 @@ $s5 = 0x017fbcc3
 
 
 Test Case #4:
+c-style code:
+void main() {
+int s0=1, s1=0, t0=128;
+while (s0 != t0) {
+s0 *=2;
+s1++;
+}
+}
+
 assembly code:-
 addi $s0, $0, 1
 add $s1, $0, $0
@@ -187,6 +244,15 @@ expected output:-
 $s0=128,$s1=7,$t0=128
 
 Test Case #5:
+c-style code:
+void main() {
+int s1=0, s0=1, t0=101;
+while(s0<t0) {
+s1+= s0;
+s0 *=2;
+}
+}
+
 assembly code:-
 addi $s1, $0, 0
 addi $s0, $0, 1
@@ -212,12 +278,19 @@ $s0=128
 $s1=127
 $t0=101
 
-used registers:-
-$s0 ,$s1,$t0
-expected output:-
-$s0=128,$s1=8,$t0=128
-
 Test Case #6
+c-style code
+void main () {
+int a0=2, a1=3, a2=4, a3=5, s0;
+s0 = diffofsums(a0, a1, a2, a3);
+}
+
+int diffofsums(int a, int b, int c, int d) {
+int t0 = a - b, t1 = c - d, s0;
+s0 = t0 - t1;
+return s0;
+}
+
 assembly code:-
 main:addi $a0, $0,2
 addi $a1, $zero,3
@@ -302,6 +375,9 @@ $t0 = 0x00000005
 $t1 = 0x00000009
 $s0 = 0xfffffffc
 $s3 = 0x00000100
+$sp = 0x00000030
+[0x000000000030] = 0x00000100
+
 
 Test Case #8
 add $t0,$zero,$zero
