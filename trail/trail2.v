@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -17,6 +18,19 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+module counter (clk, count);
+input clk;
+output [7:0] count;
+reg [7:0] count;
+initial count <=0;
+always @ (posedge clk)
+begin
+count <= count + 1;
+end
+endmodule
+
+
 module PC(PC_in,PC_out,clock);
 
 input clock;
@@ -267,27 +281,46 @@ input [31:0] WriteData;
 input RegWrite,clock;
 output [31:0] Data1,Data2;
 reg [31:0] Reg_File[0:31];
+reg [4:0] i, guard;
+wire [7:0] count;
 integer fd;
+counter specialCount (clock, count);
 // initialization of zero register and stack pointer
 initial
 begin
-Reg_File [0] <= 0;
-Reg_File [29] <= 49;
-$readmemh("Regesters.txt",Reg_File);
-fd = $fopen ("Regesters.txt", "w");
+guard=0;
+for (i=0; i<29 ; i=i+1)
+begin
+Reg_File[i]<=0;
+end
+Reg_File[29]<=49;
+Reg_File[30]<=0;
+Reg_File[31]<=0;
+fd = $fopen("Regesters.txt");
 end
 
 
 assign Data1 = Reg_File[Read1];
 assign Data2 = Reg_File[Read2];
 
-always @(posedge clock)
+always@(posedge clock)
 begin
+
+if(count == 100 & !guard)
+begin
+guard<=1;
+for (i=0; i<31 ; i=i+1)
+begin
+$fwrite(fd,"%h\n",Reg_File[i]);
+end
+$fwrite(fd,"%h\n",Reg_File[31]);
+end
+
 if(RegWrite)
 begin
 Reg_File[WriteReg] <= WriteData;
-$fwrite(fd,"%h\n",WriteData,WriteReg);
 end
+
 end
 
 endmodule
@@ -337,29 +370,43 @@ endmodule
 module DataMemory(Data,clk,Address,MemWrite,MemRead,WriteData);
 
 input MemWrite,MemRead,clk;
-
 input [31:0] Address,WriteData;
-
 reg [31:0] locations[0:8191];
-
 output [31:0] Data;
-
+reg [5:0] i, guard;
 integer fd;
+wire [7:0] count;
+counter special (clk, count);
+assign Data = (MemRead) ? locations[Address] : 32'h00000000;
 
 initial
 begin
-$readmemh("DataMemory.txt",locations);
-fd = $fopen ("DataMemory.txt", "w");
+guard=0;
+for (i=0; i<50 ; i=i+1)
+locations[i]<=0;
+begin
+#0.1
+i=i;
 end
-
-assign Data = (MemRead) ? locations[Address] : 32'h00000000;
+fd = $fopen("DataMemory.txt");
+end
 
 always@(posedge clk)
 begin
+if(count == 100 & !guard)
+begin
+guard<=1;
+for (i=0; i<50 ; i=i+1)
+$fwrite(fd,"%h\n",locations[i]);
+begin
+#0.1
+i=i;
+end
+end
+
     if(MemWrite == 1'b1)
     begin
         locations[Address] <= WriteData;
-		  $fwrite(fd,"%h/n",WriteData,Address);
     end
 end
 
