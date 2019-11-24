@@ -1,0 +1,440 @@
+Test case #1
+
+c-style code:
+void main () {
+int s0 = 5, s1 = 3, s2;
+int s2 = sum2(s0, s1);
+}
+int sum2(int a, int b) {
+return (sum(a,a) + b);
+}
+int sum (int a, int b) {
+int m; m = a+b;
+return m;
+}
+
+Assembly code:
+main: addi $s0,$zero, 5
+addi $s1,$zero, 3
+add $a0,$s0,$zero
+add $a1,$s1,$zero
+jal sum2
+add $s2,$v0,$zero
+sum2: addi $sp, $sp, -8
+sw $ra, 4($sp)
+sw $a1, 0($sp)
+addi $s2,$zero, 5
+addi $s2, $s2, 5
+add $s2, $s2, $s2
+add $a1,$a0,$zero
+jal sum
+lw $a1, 0($sp)
+lw $ra, 4($sp)
+addi $sp, $sp, 8
+add $v0, $v0, $a1
+jr $ra
+sum: addi $sp, $sp, -4
+sw $s0, 0($sp)
+add $s0, $a0, $a1
+add $v0,$s0,$zero
+lw $s0, 0($sp)
+addi $sp, $sp, 4
+jr $ra
+
+
+Machine Code:
+00000000
+20100005
+20110003
+02002020
+02202820
+0c000007
+00409020
+23bdfff8
+afbf0004
+afa50000
+20120005
+22520005
+02529020
+00802820
+0c000014
+8fa50000
+8fbf0004
+23bd0008
+00451020
+03e00008
+23bdfffc
+afb00000
+00858020
+02001020
+8fb00000
+23bd0004
+03e00008
+
+Expected ouputs:
+$v0 = 0x0000000d
+$a0 = 5
+$a1 = 5
+$s0 = 0x00000005
+$s1 = 0x00000003
+$s2 = 0x00000014
+$sp = 0x00000030
+
+Data Memory:
+[0x000000000030] = 0x00000005
+[0x000000000034] = 0x00000003
+[0x000000000038] = 0x00000018
+
+
+Test Case #2
+C-style code:
+main () {
+int s2 = 1, s1 = 0, s3 = 10;
+for (; s2 <= s3; s2++) {
+int t1 = 4*s2;
+s1 +=t1;
+}
+}
+
+Assembly Code:
+addi $s2, $zero, 1
+add $s1, $zero, $zero
+addi $s3, $zero, 10
+For: slt $t0, $s3, $s2
+bne $t0, $zero, Exit
+sll $t1, $s2, 2
+add $s1, $s1, $t1
+addi $s2, $s2, 1
+j For
+Exit: sll $zero, $zero, 0
+
+Machine Code:
+20120001
+00008820
+2013000a
+0272402a
+15000004
+00124880
+02298820
+22520001
+08000003
+
+expected outputs: $t0 = 1
+$t1 = 0x00000028
+$s1 = 0x000000dc
+$s2 = 0x0000000b
+$s3 = 0x0000000a
+
+
+Test Case #3
+c-style code:
+void main () {
+int a1 = 5, t0 = 36, s4;
+s4 = func(a1, t0);
+}
+
+int func(a, b) {
+int t1 = 6, s0 = b, s1 = 0, s4;
+while (s0 >= 0) {
+s0 -= t1;
+s1 +=a;
+}
+s4 = s1;
+return s4;
+}
+
+Assembly Code:
+main: addi $a1, $zero, 5
+addi $t0, $zero, 36
+jal func
+add $a0, $s4, $zero
+lui $at, 383
+ori $at, $at, -17243
+add $s5,$a0, $at
+j exit
+func: addi $t1, $zero, 6
+add $s0, $t0, $zero
+add $s1, $zero, $zero
+loop: slt $at, $zero, $s0
+beq $at, $zero, return
+sub $s0, $s0, $t1
+add $s1, $s1, $a1
+j loop
+return: add $s4, $s1, $zero
+jr $ra
+exit: sll $zero, $zero, 0
+
+Machine Code:
+20050005
+20080024
+0c000008
+02802020
+3c01017f
+3421bca5
+0081a820
+08000012
+20090006
+01008020
+00008820
+0010082a
+10200003
+02098022
+02258820
+0800000b
+0220a020
+03e00008
+
+expected outputs: $a0 = 0x0000001e
+$a1 = 5
+$t0 = 0x00000024
+$t1 = 0x00000006
+$s1 = 0x0000001e
+$s4 = 0x0000001e
+$s5 = 0x017fbcc3
+
+
+Test Case #4:
+c-style code:
+void main() {
+int s0=1, s1=0, t0=128;
+while (s0 != t0) {
+s0 *=2;
+s1++;
+}
+}
+
+assembly code:-
+addi $s0, $zero, 1
+add $s1, $zero, $zero
+addi $t0, $zero, 128
+while: beq $s0, $t0, done
+sll $s0, $s0, 1
+addi $s1, $s1, 1
+j while
+done: sll $zero, $zero, 0
+machine code in hexadecimal:-
+20100001
+00008820
+20080080
+12080003
+00108040
+22310001
+08000003
+used registers:-
+$s0 ,$s1,$t0
+expected output:-
+$s0=128,$s1=7,$t0=128
+
+Test Case #5:
+c-style code:
+void main() {
+int s1=0, s0=1, t0=101;
+while(s0<t0) {
+s1+= s0;
+s0 *=2;
+}
+}
+
+assembly code:-
+addi $s1, $zero, 0
+addi $s0, $zero, 1
+addi $t0, $zero, 101
+loop: slt $t1, $s0, $t0
+beq $t1, $zero, done
+add $s1, $s1, $s0
+sll $s0, $s0, 1
+j loop
+done: sll $zero, $zero, 0
+---------------------
+machine code in hexadecimal:-
+20110000
+20100001
+20080065
+0208482a
+11200003
+02308820
+00108040
+08000003
+expected output:-
+$s0=128
+$s1=127
+$t0=101
+
+Test Case #6
+c-style code
+void main () {
+int a0=2, a1=3, a2=4, a3=5, s0;
+s0 = diffofsums(a0, a1, a2, a3);
+}
+
+int diffofsums(int a, int b, int c, int d) {
+int t0 = a - b, t1 = c - d, s0;
+s0 = t0 - t1;
+return s0;
+}
+
+assembly code:-
+main: addi $a0, $zero,2
+addi $a1, $zero,3
+addi $a2, $zero,4
+addi $a3, $zero,5
+jal diffofsums 
+add $s0, $v0, $zero 
+diffofsums: add $t0, $a0, $a1 
+add $t1, $a2, $a3
+sub $s0, $t0, $t1 
+add $v0, $s0,$zero
+jr $ra
+
+machine code in hexadecimal:-
+20040002
+20050003
+20060004
+20070005
+0c000006
+00408020
+00854020
+00c74820
+01098022
+02001020
+03e00008
+
+expected outputs:
+$v0 = 0xfffffffc
+$a0 = 0x00000002
+$a1 = 0x00000003
+$a2 = 0x00000004
+$a3 = 0x00000005
+$t0 = 0x00000005
+$t1 = 0x00000009
+$s0 = 0xfffffffc
+
+
+Test Case #7
+assembly code:-
+main: addi $sp, $sp, -4
+addi $sp, $sp, -8
+addi $t0, $zero, 256
+sw $t0, 0($sp)
+lw $s3, 0($sp)
+addi $a0, $zero,2
+addi $a1, $zero,3
+addi $a2, $zero,4
+addi $a3, $zero,5
+jal diffofsums 
+add $s0, $v0, $zero 
+diffofsums: add $t0, $a0, $a1 
+add $t1, $a2, $a3
+sub $s0, $t0, $t1 
+add $v0, $s0,$zero
+
+machine code in hexadecimal:-
+23bdfffc
+23bdfff8
+20080100
+afa80000
+8fb30000
+20040002
+20050003
+20060004
+20070005
+0c00000b
+00408020
+00854020
+00c74820
+01098022
+02001020
+
+//expected output:-
+$v0 = 0xfffffffc
+$a0 = 0x00000002
+$a1 = 0x00000003
+$a2 = 0x00000004
+$a3 = 0x00000005
+$t0 = 0x00000005
+$t1 = 0x00000009
+$s0 = 0xfffffffc
+$s3 = 0x00000100
+$sp = 0x00000030
+[0x000000000030] = 0x00000100
+
+
+Test Case #8
+add $t0,$zero,$zero
+addi $t1,$zero,20
+while: addi $t1,$t1,-1
+addi $t0,$t0,1
+slt $at,$t1,$t2
+beq $at, $zero, EXIT
+j while
+EXIT: sll $zero, $zero, 0
+
+machine code in hex:-
+00004020
+20090014
+2129ffff
+21080001
+012a582a
+11600001
+08000002
+
+
+expected output 
+$t0= 0x00000001
+$t1= 0x00000013
+
+
+Test Case #9
+addi $s3,$zero,10
+addi $s4,$zero,4
+addi $s1,$zero,4
+addi $s2,$zero,7
+bne $s3, $s4, Else
+add $s0, $s1, $s2
+j Exit
+Else: sub $s0, $s1, $s2
+Exit: sll $zero, $zero, 0
+
+
+Machine code:-
+2013000a
+20140004
+20110004
+20120007
+16740002
+02328020
+08000008
+02328022
+expected output :
+$s3=10
+$s4=4
+$s1=4
+$s2=7
+$s0=-3  = 0xfffffffd
+
+
+
+Test Case #10
+addi $s0, $zero, 1
+add $s1, $zero, $zero
+addi $t0, $zero, 128
+while: beq $s0, $t0, done
+sll $s0, $s0, 1
+addi $s1, $s1, 1
+j while
+done: sll $zero, $zero, 0
+
+
+machine code:-
+20100001
+00008820
+20080080
+12080003
+00108040
+22310001
+08000003
+
+expected output:-
+$t0=0x00000080
+$s0=0x00000080
+$s1=0x00000007
