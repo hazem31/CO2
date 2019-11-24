@@ -328,7 +328,7 @@ case (AluControl) // case condition to check values
 	  8 : AluOutput <= (input2>>shamt);	// 8 for srl instruction
      9 : AluOutput <= (input2>>>shamt);	// 9 for sra instruction
     12 : AluOutput <= ~(input1 | input2); // 12 on control pins mean do nor operation
-    13 : AluOutput <= (input1<<shamt); // 13 on control pins mean dicards second input and shift left input 1 by the shmat field value
+    13 : AluOutput <= (input2<<shamt); // 13 on control pins mean dicards second input and shift left input 1 by the shmat field value
     default: AluOutput <= 0; // incase of error just output zero 
 endcase
 
