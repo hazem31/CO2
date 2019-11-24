@@ -118,6 +118,7 @@ Machine Code:
 02298820
 22520001
 08000003
+00000000
 
 expected outputs: $t0 = 1
 $t1 = 0x00000028
@@ -167,12 +168,14 @@ exit: sll $zero, $zero, 0
 Machine Code:
 20050005
 20080024
-0c000008
+0c00000a
 02802020
 3c01017f
+3c01ffff
 3421bca5
+00210825
 0081a820
-08000012
+08000014
 20090006
 01008020
 00008820
@@ -180,9 +183,10 @@ Machine Code:
 10200003
 02098022
 02258820
-0800000b
+0800000d
 0220a020
 03e00008
+00000000
 
 expected outputs: $a0 = 0x0000001e
 $a1 = 5
@@ -220,6 +224,8 @@ machine code in hexadecimal:-
 00108040
 22310001
 08000003
+00000000
+
 used registers:-
 $s0 ,$s1,$t0
 expected output:-
@@ -255,6 +261,8 @@ machine code in hexadecimal:-
 02308820
 00108040
 08000003
+00000000
+
 expected output:-
 $s0=128
 $s1=127
@@ -374,10 +382,10 @@ machine code in hex:-
 20090014
 2129ffff
 21080001
-012a582a
-11600001
+012a082a
+10200001
 08000002
-
+00000000
 
 expected output 
 $t0= 0x00000001
@@ -405,6 +413,7 @@ Machine code:-
 02328020
 08000008
 02328022
+00000000
 expected output :
 $s3=10
 $s4=4
