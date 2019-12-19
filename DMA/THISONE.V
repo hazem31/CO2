@@ -226,7 +226,7 @@ begin
 IO_Reg = 50;
 req_IO = 0 ;
 DMA_Req = 0;
-req_IO = 5;
+req_IO = 0;
 end
 
 assign Data_Bus = ((Read_DMA | Read_CPU) & (address_Bus == 1006)) ? IO_Data : 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
@@ -280,7 +280,7 @@ begin
 IO_Reg = 70;
 req_IO = 0 ;
 DMA_Req = 0;
-req_IO = 6;
+req_IO = 0;
 end
 
 assign Data_Bus = ((Read_DMA | Read_CPU) & (address_Bus == 1001)) ? IO_Data : 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
